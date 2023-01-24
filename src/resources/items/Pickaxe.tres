@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://b364uqteptm5s"]
+
+[ext_resource type="PackedScene" uid="uid://x0futyfcsjjk" path="res://src/tools/scenes/Pickaxe.tscn" id="1_258hq"]
+[ext_resource type="Script" path="res://src/resources/items/Item.gd" id="1_fkgrp"]
+[ext_resource type="Texture2D" uid="uid://bub41f6bkg20i" path="res://assets/images/items/Pickaxe.png" id="2_wwpmu"]
+
+[resource]
+script = ExtResource("1_fkgrp")
+name = "Pickaxe"
+stackable = false
+max_stack_size = 1
+type = 2
+texture = ExtResource("2_wwpmu")
+object = ExtResource("1_258hq")

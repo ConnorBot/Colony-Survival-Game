@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn662n6d7c4tf"]
+
+[ext_resource type="PackedScene" uid="uid://b3f1ofssu67u" path="res://assets/terrian/Rock.glb" id="1_7otc4"]
+
+[node name="RockMesh" instance=ExtResource("1_7otc4")]

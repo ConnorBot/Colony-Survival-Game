@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://2es5hfcxierg"]
+
+[ext_resource type="Script" path="res://src/ui/scripts/Hotbar.gd" id="1_ahhmw"]
+[ext_resource type="PackedScene" uid="uid://cs0ets3l2683t" path="res://src/ui/scenes/ItemGrid.tscn" id="1_onhjf"]
+
+[node name="Hotbar" type="MarginContainer"]
+layout_direction = 1
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_ahhmw")
+ItemGrid = ExtResource("1_onhjf")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb5v63wyvmra7"]
+
+[ext_resource type="Script" path="res://src/objects/terrian/scripts/Rock.gd" id="1_t2w2d"]
+[ext_resource type="Resource" uid="uid://nrdpf6du4b17" path="res://src/resources/items/Stone.tres" id="2_07ioo"]
+[ext_resource type="PackedScene" uid="uid://wwluypokckya" path="res://src/ui/scenes/StatusBar.tscn" id="2_yaknu"]
+[ext_resource type="PackedScene" uid="uid://cn662n6d7c4tf" path="res://src/objects/terrian/scenes/RockMesh.tscn" id="3_j7cop"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bsfrw"]
+size = Vector3(0.9, 0.75, 0.9)
+
+[node name="Rock" type="StaticBody3D"]
+script = ExtResource("1_t2w2d")
+toolType = 0
+drop_resource = ExtResource("2_07ioo")
+drop_amout = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.19, 0)
+shape = SubResource("BoxShape3D_bsfrw")
+
+[node name="StatusBar" parent="." instance=ExtResource("2_yaknu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.629985, 0)
+
+[node name="RockMesh" parent="." instance=ExtResource("3_j7cop")]

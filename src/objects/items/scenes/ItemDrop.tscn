@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d25qnisd8s7p4"]
+
+[ext_resource type="Script" path="res://src/objects/items/scripts/ItemDrop.gd" id="1_vlxly"]
+[ext_resource type="Texture2D" uid="uid://dw582vqsab8vf" path="res://assets/images/items/Stone.png" id="2_lgfgd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_28yic"]
+size = Vector3(0.2, 0.2, 0.1)
+
+[node name="ItemDrop" type="CharacterBody3D"]
+collision_mask = 2
+script = ExtResource("1_vlxly")
+
+[node name="Sprite" type="Sprite3D" parent="."]
+process_mode = 1
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+texture = ExtResource("2_lgfgd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_28yic")

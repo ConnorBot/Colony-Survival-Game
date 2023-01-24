@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyashxa2xp7pn"]
+
+[ext_resource type="Script" path="res://src/ui/scripts/InventoryMenu.gd" id="1_61exp"]
+[ext_resource type="PackedScene" uid="uid://cs0ets3l2683t" path="res://src/ui/scenes/ItemGrid.tscn" id="2_6edcu"]
+
+[node name="InventoryMenu" type="MarginContainer"]
+script = ExtResource("1_61exp")
+ItemGrid = ExtResource("2_6edcu")

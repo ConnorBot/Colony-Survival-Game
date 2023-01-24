@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://x0futyfcsjjk"]
+
+[ext_resource type="PackedScene" uid="uid://bopbs51q50mt2" path="res://assets/tools/Pickaxe.glb" id="1_m3jce"]
+[ext_resource type="Script" path="res://src/tools/scripts/Pickaxe.gd" id="2_ykyb6"]
+
+[node name="Pickaxe" instance=ExtResource("1_m3jce")]
+script = ExtResource("2_ykyb6")
+damage = 30
+type = 0

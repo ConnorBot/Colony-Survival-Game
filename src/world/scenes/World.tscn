@@ -1,0 +1,112 @@
+[gd_scene load_steps=18 format=3 uid="uid://b0mjxcddjehba"]
+
+[ext_resource type="PackedScene" uid="uid://jhimstp4qc1c" path="res://src/player/scenes/Player.tscn" id="1_1eo60"]
+[ext_resource type="Script" path="res://src/world/scripts/World.gd" id="1_wq5qk"]
+[ext_resource type="PackedScene" uid="uid://cyf0sutpt4kf7" path="res://src/player/scenes/PlayerCamera.tscn" id="2_b22nm"]
+[ext_resource type="Texture2D" uid="uid://dspd6js7uthdb" path="res://icon.svg" id="4_r5vav"]
+[ext_resource type="PackedScene" uid="uid://bdmvcpna2osis" path="res://src/ui/scenes/UI.tscn" id="5_c0toh"]
+[ext_resource type="PackedScene" uid="uid://dav0fwl0mn1ys" path="res://src/enemies/scenes/Blob.tscn" id="6_576x1"]
+[ext_resource type="PackedScene" uid="uid://cb5v63wyvmra7" path="res://src/objects/terrian/scenes/Rock.tscn" id="7_ysmyb"]
+[ext_resource type="PackedScene" uid="uid://blxivkjrn7noe" path="res://src/objects/terrian/scenes/Tree.tscn" id="8_i1lji"]
+[ext_resource type="PackedScene" uid="uid://d25qnisd8s7p4" path="res://src/objects/items/scenes/ItemDrop.tscn" id="10_jb1iv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0103r"]
+sky_top_color = Color(0.529412, 0.6, 0.698039, 1)
+sky_horizon_color = Color(0.682353, 0.692157, 0.707843, 1)
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.682353, 0.692157, 0.707843, 1)
+
+[sub_resource type="Sky" id="Sky_jhq18"]
+sky_material = SubResource("ProceduralSkyMaterial_0103r")
+
+[sub_resource type="Environment" id="Environment_a756r"]
+background_mode = 2
+sky = SubResource("Sky_jhq18")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_84k7k"]
+size = Vector2(50, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xa2e"]
+albedo_texture = ExtResource("4_r5vav")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_orr5t"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_brsyj"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
+[sub_resource type="GDScript" id="GDScript_ms2g3"]
+script/source = "extends CharacterBody3D
+
+
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting(\"physics/3d/default_gravity\")
+
+
+func _physics_process(delta):
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+
+	# Handle Jump.
+	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var input_dir = Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\")
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	move_and_slide()
+"
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_wq5qk")
+item_drop_scene = ExtResource("10_jb1iv")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a756r")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.764921, -0.165625, 0.622466, 0, 0.966376, 0.257133, -0.644124, -0.196686, 0.739202, 0, 0, 0)
+shadow_enabled = true
+
+[node name="UI" parent="." instance=ExtResource("5_c0toh")]
+
+[node name="Player" parent="." instance=ExtResource("1_1eo60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0458056, 0)
+
+[node name="PlayerCamera" parent="." instance=ExtResource("2_b22nm")]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_84k7k")
+surface_material_override/0 = SubResource("StandardMaterial3D_3xa2e")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+collision_layer = 2
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_orr5t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_brsyj")
+
+[node name="Blob" parent="." instance=ExtResource("6_576x1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.35189)
+
+[node name="Blob2" parent="." instance=ExtResource("6_576x1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7133, 0, -1.33537)
+script = SubResource("GDScript_ms2g3")
+
+[node name="Rock" parent="." instance=ExtResource("7_ysmyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535326, 0, 1.93024)
+
+[node name="StaticBody3D" parent="." instance=ExtResource("8_i1lji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)

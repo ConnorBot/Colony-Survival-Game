@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://blxivkjrn7noe"]
+
+[ext_resource type="Script" path="res://src/objects/terrian/scripts/Tree.gd" id="1_jwn3j"]
+[ext_resource type="PackedScene" uid="uid://d4mlaetilofhs" path="res://src/objects/terrian/scenes/TreeMesh.tscn" id="1_pyu03"]
+[ext_resource type="Resource" uid="uid://c7pegllj008vj" path="res://src/resources/items/Wood.tres" id="2_7tq4y"]
+[ext_resource type="PackedScene" uid="uid://wwluypokckya" path="res://src/ui/scenes/StatusBar.tscn" id="3_i7kuu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2igau"]
+size = Vector3(0.4, 1.5, 0.4)
+
+[node name="Tree" type="StaticBody3D"]
+script = ExtResource("1_jwn3j")
+total_durability = 200
+toolType = 2
+drop_resource = ExtResource("2_7tq4y")
+drop_amout = 15
+
+[node name="TreeMesh" parent="." instance=ExtResource("1_pyu03")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_2igau")
+
+[node name="StatusBar" parent="." instance=ExtResource("3_i7kuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.2)

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bxvr2i805fh0k"]
+
+[ext_resource type="PackedScene" uid="uid://b838c31hpvkbg" path="res://src/tools/scenes/Sword.tscn" id="1_0vdto"]
+[ext_resource type="Script" path="res://src/resources/items/Item.gd" id="2_xjj3b"]
+[ext_resource type="Texture2D" uid="uid://0vcvto2npdvm" path="res://assets/images/items/Sword.png" id="3_ouv5u"]
+
+[resource]
+script = ExtResource("2_xjj3b")
+name = "Sword"
+stackable = false
+max_stack_size = 1
+type = 2
+texture = ExtResource("3_ouv5u")
+object = ExtResource("1_0vdto")

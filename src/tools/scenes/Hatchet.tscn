@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqp1ek58hep5g"]
+
+[ext_resource type="PackedScene" uid="uid://d13y6migq3qu0" path="res://assets/tools/Hatchet.glb" id="1_ak3wc"]
+[ext_resource type="Script" path="res://src/tools/scripts/Hatchet.gd" id="2_ewaiq"]
+
+[node name="Hatchet" instance=ExtResource("1_ak3wc")]
+script = ExtResource("2_ewaiq")
+damage = 30
+type = 2

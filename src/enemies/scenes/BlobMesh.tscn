@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcc3fewle7t1e"]
+
+[ext_resource type="PackedScene" uid="uid://c2ctgl2mcoq6g" path="res://assets/enemies/Blob.glb" id="1_g4wn4"]
+
+[node name="BlobMesh" instance=ExtResource("1_g4wn4")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

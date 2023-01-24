@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdmvcpna2osis"]
+
+[ext_resource type="Script" path="res://src/ui/scripts/UI.gd" id="1_bpfmi"]
+[ext_resource type="PackedScene" uid="uid://2es5hfcxierg" path="res://src/ui/scenes/Hotbar.tscn" id="1_hedum"]
+[ext_resource type="PackedScene" uid="uid://dyashxa2xp7pn" path="res://src/ui/scenes/InventoryMenu.tscn" id="2_oln5p"]
+[ext_resource type="PackedScene" uid="uid://b3gmbj8aiwiqb" path="res://src/ui/scenes/Tooltip.tscn" id="4_apsf7"]
+[ext_resource type="PackedScene" uid="uid://da26qcumi8xhy" path="res://src/ui/scenes/DragPreview.tscn" id="5_kybdm"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bpfmi")
+
+[node name="Hotbar" parent="." instance=ExtResource("1_hedum")]
+
+[node name="InventoryMenu" parent="." instance=ExtResource("2_oln5p")]
+
+[node name="Tooltip" parent="." instance=ExtResource("4_apsf7")]
+
+[node name="DragPreview" parent="." instance=ExtResource("5_kybdm")]
+grow_horizontal = 2
+grow_vertical = 2

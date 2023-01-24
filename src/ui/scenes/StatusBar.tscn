@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://wwluypokckya"]
+
+[ext_resource type="Script" path="res://src/ui/scripts/StatusBar.gd" id="1_vh5jm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8m7r"]
+albedo_color = Color(0.917647, 0, 0.0666667, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bo06y"]
+material = SubResource("StandardMaterial3D_k8m7r")
+size = Vector2(0.5, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3k2l6"]
+albedo_color = Color(0, 0.517647, 0.109804, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j87pk"]
+material = SubResource("StandardMaterial3D_3k2l6")
+size = Vector2(0.5, 0.1)
+
+[node name="StatusBar" type="Node3D"]
+script = ExtResource("1_vh5jm")
+
+[node name="Background" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+layers = 2
+sorting_offset = 1.0
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_bo06y")
+
+[node name="Status" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+layers = 2
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_j87pk")

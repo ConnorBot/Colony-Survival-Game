@@ -1,0 +1,3 @@
+ItemResource
+Environment
+FontFile

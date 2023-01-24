@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxkd03q8nejpt"]
+
+[ext_resource type="PackedScene" uid="uid://bivajfr47qw53" path="res://assets/player/Player.glb" id="1_y2fee"]
+
+[node name="PlayerBody" instance=ExtResource("1_y2fee")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(0.0361688, 0.859217, 0.0509661)
+bones/0/rotation = Quaternion(-0.00769002, 5.55242e-18, -2.00804e-09, 0.99997)
+bones/4/rotation = Quaternion(-0.109275, 0.0661042, -0.573357, 0.809291)
+bones/5/rotation = Quaternion(0.265268, 0.0403601, -0.0300197, 0.962862)
+bones/8/rotation = Quaternion(0.344163, 0.683922, 0.493675, 0.412416)
+bones/9/rotation = Quaternion(0.176473, -0.00536475, 0.0228087, 0.984027)
+bones/11/rotation = Quaternion(-0.00554696, -0.208764, -0.977534, 0.0285317)
+bones/12/rotation = Quaternion(-0.438269, -3.51203e-05, 0.00490793, 0.89883)
+bones/13/rotation = Quaternion(0.765346, -0.00143672, -0.0335742, 0.642742)
+bones/14/rotation = Quaternion(-0.00650519, 0.0664878, 0.996938, 0.0406443)
+bones/15/rotation = Quaternion(-0.381757, 3.61142e-05, -0.00427508, 0.924253)
+bones/16/rotation = Quaternion(0.815245, 0.0053852, 0.0447301, 0.57736)
+bones/17/position = Vector3(0.316274, 0.0598901, 0.0503899)
+bones/18/position = Vector3(0.298514, 0.513861, 0.396155)
+bones/19/position = Vector3(-0.262082, 0.0598901, -0.143057)
+bones/19/rotation = Quaternion(0.00606803, 0.718762, -0.695202, -0.00627367)
+bones/20/position = Vector3(-0.234846, 0.507567, 0.396155)
+
+[node name="RightHandBone" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.880784, -0.402442, -0.249521, -0.431377, 0.46464, 0.77332, -0.195279, 0.788765, -0.582852, -0.683632, 1.63214, 0.578385)
+bone_name = "Hand.r"
+bone_idx = 10
+
+[node name="Hold" type="Node3D" parent="Armature/Skeleton3D/RightHandBone" index="0"]
+transform = Transform3D(0.994337, 0.101299, -0.0321316, -0.0477, 0.155234, -0.986726, -0.0949657, 0.98267, 0.159186, 0.0167425, 0.112242, 0.000513494)

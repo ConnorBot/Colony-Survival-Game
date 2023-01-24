@@ -1,0 +1,13 @@
+res://src/ui/scenes/ItemGrid.tscn
+res://src/ui/scripts/ItemSlot.gd
+res://src/ui/scenes/Hotbar.tscn
+res://src/ui/scenes/UI.tscn
+res://src/player/scenes/PlayerCamera.tscn
+res://src/player/scenes/Player.tscn
+res://src/world/scenes/World.tscn
+res://src/player/scenes/PlayerBody.tscn
+res://src/enemies/scenes/Blob.tscn
+res://src/ui/scenes/StatusBar.tscn
+res://src/objects/items/scenes/ItemDrop.tscn
+res://src/objects/terrian/scenes/Rock.tscn
+res://src/objects/terrian/scenes/Tree.tscn

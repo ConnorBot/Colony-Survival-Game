@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://nrdpf6du4b17"]
+
+[ext_resource type="Script" path="res://src/resources/items/Item.gd" id="1_t2p6l"]
+[ext_resource type="Texture2D" uid="uid://dw582vqsab8vf" path="res://assets/images/items/Stone.png" id="2_rd1k1"]
+
+[resource]
+script = ExtResource("1_t2p6l")
+name = "Stone"
+stackable = true
+max_stack_size = 10
+type = 1
+texture = ExtResource("2_rd1k1")
